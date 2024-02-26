@@ -1,7 +1,9 @@
 import entity.Student;
+import interfaces.Calulator;
 import interfaces.Printer;
 
 import java.sql.Time;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -86,6 +88,25 @@ public class App {
         System.out.println(date);
         System.out.println(LocalDateTime.MAX);
         System.out.println(LocalDateTime.MIN);
+        Predicate<String> isEqual = x -> x.equals("Hello");
+
+        System.out.println(isEqual.test("Joe"));
+
+        Supplier<String> helloWorld = () -> "Hello World";
+        System.out.println(helloWorld.get());
+
+        Function<Double, Integer> doubleToInt = Double::intValue;
+
+        System.out.println(doubleToInt.apply(55.4646546510651));
+
+
+        Consumer<String> print = System.out::println;
+
+        print.accept(helloWorld.get());
+
+        Calulator<Integer, Integer> add = (x,y) -> x+y;
+
+        System.out.println(add.printResult(5, 4));
     }
     public static void filter(List<String> e, String c) {
         for (int i = 0; i < e.size(); i++) {
